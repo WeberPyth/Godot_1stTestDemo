@@ -15,5 +15,6 @@ namespace MyDemo
         public const string PLAYER_ANIMATED_SPRITE = "PlayerAnimatedSprite";
         public const string PLAYER_ANIMATED_WALK = "walk";
         public const string PLAYER_ANIMATED_UP = "up";
+        public const string PLAYER_COLLISION_SHAPE = "PlayerCollisionShape";
     }
 }
