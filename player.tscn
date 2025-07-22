@@ -45,3 +45,5 @@ animation = &"up"
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hqtel")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

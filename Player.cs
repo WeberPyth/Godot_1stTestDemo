@@ -53,16 +53,16 @@ public partial class Player : Area2D
 		UpdatePlayerAnimation(velocity, animatedSprite);
 	}
 
-    // 碰撞时触发信号
-    private void OnBodyEntered(Node2D body)
-    {
-        Hide(); // 碰撞隐藏玩家
-        EmitSignal(SignalName.Hit);
-        // 防抖处理：隐藏后禁用碰撞形状
-        GetNode<CollisionShape2D>(GlobalContext.PLAYER_COLLISION_SHAPE).SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
-    }
+	// 碰撞时触发信号
+	private void OnBodyEntered(Node2D body)
+	{
+		Hide(); // 碰撞隐藏玩家
+		EmitSignal(SignalName.Hit);
+		// 防抖处理：隐藏后禁用碰撞形状
+		GetNode<CollisionShape2D>(GlobalContext.PLAYER_COLLISION_SHAPE).SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+	}
 
-    private void UpdatePlayerAnimation(Vector2 vector, AnimatedSprite2D animatedSprite)
+	private void UpdatePlayerAnimation(Vector2 vector, AnimatedSprite2D animatedSprite)
 	{
 		if(vector.X != 0) 
 		{
@@ -84,4 +84,12 @@ public partial class Player : Area2D
 		}
 		animatedSprite.Play();
 	}
+
+	public void Start(Vector2 position) 
+	{
+		Position = position;
+		Show(); // 显示玩家
+		GetNode<CollisionShape2D>(GlobalContext.PLAYER_COLLISION_SHAPE).Disabled = false; // 启用碰撞形状
+	}
+
 }
